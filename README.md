@@ -2,17 +2,17 @@
 ##Documents for the presentation on OpenRefine at Ohio IR day.
 
 ###Acknowledgements
-*Major thanks to Christina Harlow for not only creating LC-Reconcile, but also for creating and sharing this [excellent documentation|http://christinaharlow.com/openrefine-reconciliation-workshop-c4lmdc]. 
+*Major thanks to Christina Harlow for not only creating LC-Reconcile, but also for creating and sharing this [excellent documentation](http://christinaharlow.com/openrefine-reconciliation-workshop-c4lmdc). 
 
-*Data Carpentry has some great materials for getting started with OpenRefine.
+*Data Carpentry has some great materials for [getting started with OpenRefine](http://www.datacarpentry.org/OpenRefine-ecology-lesson/01-working-with-openrefine.html).
 ###The setup - OpenRefine
 *Ubuntu running in VirtualBox
-**[Installation instructions|https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux]
-**[requires jre|https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get]
+**[Installation instructions](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux)
+**[requires jre](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get)
 
 ###The setup - LC Reconcile
 
-1. ```git clone https://github.com/cmh2166/lc-reconcile.git'
+1. ```git clone https://github.com/cmh2166/lc-reconcile.git'''
 2. ```cd lc-reconcile```
 3. ```sudo pip install -r requirements.txt```
 4. ```python reconcile.py```
@@ -21,7 +21,9 @@
 
 ###Starting OR
 1. Switch to directory where OR is installed and 
+
 ```./refine```
+
 2. A browser should open and go to http://127.0.0.1:3333/
 
 ###The data
@@ -57,7 +59,7 @@ Ashbery, John, 1927-||Lehman, David, 1948-
 2. Edit column > Split into several columns...
 3. Separator = ||
 4. Now we have over a dozen columns with dc.contributor.author and it will be hard to work on these. Another solution is to separate the authors by creating a new record for each one. 
-5. In the undo/redo pane, click on 0 to undo the changes.4. Now we have over a dozen columns with dc.contributor.author and it will be hard to work on these. Another solution is to separate the authors by creating a new record for each one. 
+5. In the undo/redo pane, click on 0 to undo the changes.4. Now we have over a dozen columns with dc.contributor.author and it will be hard to work on these. Another solution is to separate the authors by creating a new row for each one. For more on rows/records, see [the Programming Historian's post on Cleaning Data with OpenRefine](http://programminghistorian.org/lessons/cleaning-data-with-openrefine). 
 6. On the dc.contributors.author column, click on Edit Cells > Split multivalue cells
 7. Additional authors are now placed in their own row, so we can work on all authors in one column. 
 8. Now we can reconcile the names following the steps outlined above.
