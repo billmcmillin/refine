@@ -20,10 +20,7 @@
 6. Leave that terminal open and open OpenRefine.
 
 ###Starting OR
-1. Switch to directory where OR is installed and 
-
-```./refine```
-
+1. Switch to directory where OR is installed and ```./refine```
 2. A browser should open and go to http://127.0.0.1:3333/
 
 ###The data
@@ -63,6 +60,14 @@ Ashbery, John, 1927-||Lehman, David, 1948-
 6. On the dc.contributors.author column, click on Edit Cells > Split multivalue cells
 7. Additional authors are now placed in their own row, so we can work on all authors in one column. 
 8. Now we can reconcile the names following the steps outlined above.
+9. When reconciliation is complete, we may still need to select the best match. Look at Claudia Emerson. There are 3 possible matches for her name. Clicking on an item will take you to its page at id.loc.gov. After looking determining the correct match, click on the double check box to apply that heading to all identical cells.
+
+###Find and replace
+*There are likely still values that will need to be updated that the reconciliation service missed.
+1. On the column arrow, select Edit Cells > Transform
+2. In expression, you can use GREL 
+3. For find and replace: value.replace(/Giovanni.*/,"Giovanni, Nikki"
+4. We may want to reconcile again if values are more likely to be recognized.
 
 ###Bringing them back together
 1. Are we done working on this column? If so, let's bring the values back together.
