@@ -26,6 +26,8 @@
 ###The data
 1. In a DRC repository, go to a collection and click 'Export metadata.'
 2. Save in your working directory as 'data/original_data.csv'
+3. The data must be saved in csv format with UTF-8 encoding. 
+4. To convert a csv to UTF-8 encoding, you can use the encode-utf8.rb in this repository with ```./encode-utf8.rb infile.csv outfile.csv```
 
 ###Import
 1. In OR, browse to your file and click 'next.'
@@ -71,4 +73,7 @@ Ashbery, John, 1927-||Lehman, David, 1948-
 
 ###Bringing them back together
 1. Are we done working on this column? If so, let's bring the values back together.
+2. In the column triangle, select Edit Cells > Join multi-valued cells
+3. Choose a separator that won't be found in the data such as ||2. In the column triangle, select Edit Cells > Join multi-valued cells
 
+###
