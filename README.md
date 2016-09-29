@@ -1,5 +1,5 @@
-#Garbage Reconciliation: Data Cleaning and Linking. 
-##Documents for the presentation on OpenRefine at Ohio IR day.
+#Garbage Reconciliation: Data Cleaning and Linking 
+##Documents for the presentation on OpenRefine at Ohio IR day
 
 ###Acknowledgements
 *Major thanks to Christina Harlow for not only creating LC-Reconcile, but also for creating and sharing this [excellent documentation](http://christinaharlow.com/openrefine-reconciliation-workshop-c4lmdc). 
@@ -12,7 +12,7 @@
 
 ###The setup - LC Reconcile
 
-1. ```git clone https://github.com/cmh2166/lc-reconcile.git'''
+1. ```git clone https://github.com/cmh2166/lc-reconcile.git```
 2. ```cd lc-reconcile```
 3. ```sudo pip install -r requirements.txt```
 4. ```python reconcile.py```
@@ -29,6 +29,11 @@
 3. The data must be saved in csv format with UTF-8 encoding. 
 4. To convert a csv to UTF-8 encoding, you can use the encode-utf8.rb in this repository with ```./encode-utf8.rb infile.csv outfile.csv```
 
+###Pre-cleaning the data
+* Seriously?!?! Yes. These tools will do a great job on the data we give it, but the phrase 'garbage in, garbage out' applies to most steps of this process. 
+* Lc-reconcile has greater accuracy when the names we feed it are in inverse order and have no associated dates
+* If the raw data needs to be pre-cleaned there are a few scripts in this repo that may help 
+
 ###Import
 1. In OR, browse to your file and click 'next.'
 2. Make sure the encoding is UTF-8.
@@ -37,7 +42,6 @@
 5. Check 'quotation marks are used to enclose cells containing column separators.'
 6. Create project
 7. Make sure the number of rows matches the number of records in your collection. 
-
 
 ###Letting OR know where to find LC Reconcile
 1. in OR, under dc.contributor.author go to Reconcile > Start reconciling
@@ -49,31 +53,31 @@
 ####Names
 1. dc.contributor.author
 2. dc.subject
+3. Notice that there is more than one entry per column:
+	Ashbery, John, 1927-||Lehman, David, 1948-
 
-**Notice that there is more than one entry per column:
-Ashbery, John, 1927-||Lehman, David, 1948-
-
-**We'll need to separate these so we can work on each piece of data.
-1. Go to the arrow next to dc.contributor.author
-2. Edit column > Split into several columns...
-3. Separator = ||
-4. Now we have over a dozen columns with dc.contributor.author and it will be hard to work on these. Another solution is to separate the authors by creating a new record for each one. 
-5. In the undo/redo pane, click on 0 to undo the changes.4. Now we have over a dozen columns with dc.contributor.author and it will be hard to work on these. Another solution is to separate the authors by creating a new row for each one. For more on rows/records, see [the Programming Historian's post on Cleaning Data with OpenRefine](http://programminghistorian.org/lessons/cleaning-data-with-openrefine). 
-6. On the dc.contributors.author column, click on Edit Cells > Split multivalue cells
-7. Additional authors are now placed in their own row, so we can work on all authors in one column. 
-8. Now we can reconcile the names following the steps outlined above.
-9. When reconciliation is complete, we may still need to select the best match. Look at Claudia Emerson. There are 3 possible matches for her name. Clicking on an item will take you to its page at id.loc.gov. After looking determining the correct match, click on the double check box to apply that heading to all identical cells.
+####Splitting values
+1. We'll need to separate these so we can work on each piece of data.
+2. Go to the arrow next to dc.contributor.author
+3. Edit column > Split into several columns...
+4. Separator = ||
+5. Now we have over a dozen columns with dc.contributor.author and it will be hard to work on these. Another solution is to separate the authors by creating a new record for each one. 
+6. In the undo/redo pane, click on 0 to undo the changes.4. Now we have over a dozen columns with dc.contributor.author and it will be hard to work on these. Another solution is to separate the authors by creating a new row for each one. For more on rows/records, see [the Programming Historian's post on Cleaning Data with OpenRefine](http://programminghistorian.org/lessons/cleaning-data-with-openrefine). 
+7. On the dc.contributors.author column, click on Edit Cells > Split multivalue cells
+8. Additional authors are now placed in their own row, so we can work on all authors in one column. 
+9. Now we can reconcile the names following the steps outlined above.
+10. When reconciliation is complete, we may still need to select the best match. Look at Claudia Emerson. There are 3 possible matches for her name. Clicking on an item will take you to its page at id.loc.gov. After looking determining the correct match, click on the double check box to apply that heading to all identical cells.
 
 ###Find and replace
-*There are likely still values that will need to be updated that the reconciliation service missed.
+* There are likely still values that will need to be updated that the reconciliation service missed.
 1. On the column arrow, select Edit Cells > Transform
 2. In expression, you can use GREL 
-3. For find and replace: value.replace(/Giovanni.*/,"Giovanni, Nikki"
+3. For find and replace: value.replace(/Giovanni.*/,"Giovanni, Nikki")
 4. We may want to reconcile again if values are more likely to be recognized.
 
 ###Bringing them back together
 1. Are we done working on this column? If so, let's bring the values back together.
 2. In the column triangle, select Edit Cells > Join multi-valued cells
-3. Choose a separator that won't be found in the data such as ||2. In the column triangle, select Edit Cells > Join multi-valued cells
+3. Choose a separator that won't be found in the data such as ||.
 
 ###
