@@ -7,8 +7,8 @@
 *Data Carpentry has some great materials for [getting started with OpenRefine](http://www.datacarpentry.org/OpenRefine-ecology-lesson/01-working-with-openrefine.html).
 ###The setup - OpenRefine
 *Ubuntu running in VirtualBox
-**[Installation instructions](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux)
-**[requires jre](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get)
+*[Installation instructions](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux)
+*[requires jre](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get)
 
 ###The goals
 1. Perform authority control on all names and subject headings
@@ -73,7 +73,7 @@
 4. Remove the extra whitespace with GREL ```trim(value)```
 5. Remove the trailing comma with value.replace(/,$/,"")
 
-####Reconciliation
+###Reconciliation
 1. Now we can reconcile the names following the steps outlined above.
 2. When reconciliation is complete, we may still need to select the best match. Look at Claudia Emerson. There are 3 possible matches for her name. Clicking on an item will take you to its page at id.loc.gov. After looking determining the correct match, click on the double check box to apply that heading to all identical cells.
 3. We can view only those that need attention by selecting 'none' under the judgment facet
@@ -92,6 +92,7 @@
 1. Are we done working on this column? If so, let's bring the values back together.
 2. In the column triangle, select Edit Cells > Join multi-valued cells
 3. Choose a separator that won't be found in the data such as ||.
+4. Export as a csv with a name like 'subject_clean.csv'
 
 ###Adding data
 1. We have a list of subject headings and the authors to which those headings are to be applied. Do we just search for names and paste in the headings?
@@ -100,12 +101,18 @@
 4. If we're going to match the data to the keys in our subjects, we'll need to reconcile both.
 5. The author names we were given had names in direct order. Use invert_order.rb to put the last name first. It's not perfect, but gets us closer to inverse order.
 6. In the file with our records, make sure the multi-value cells have been split into mulitple rows 
-7. Reconcile the subject dictionary file just like we did for the records.
-8. In OR, join multi-valued cells as we did above.
-9. Export as CSV and upload to the repository.
+7. Reconcile the subject dictionary file just like we did for the records. 
+8. Export the dictionary file as 'dictionary.csv'.
+9. With the reconciled subject dictionary, run the script apply_mapping.rb with the command ```ruby apply_mapping.rb data/subj_clean.csv data/mapping_output.csv 2 31 data/dictionary.csv``` where 2 is the column in the input data (subj_clean.csv) that holds the values we want to compare against the subject dictionary. 31 is the number of the column in the input data to which we'd like to append the subjects when a match is found.  
+10. Import mapping_out.csv into OR and  join multi-valued cells as we did above.
+11. Export as CSV and upload to the repository. Be sure to save a copy of the OR project as well.
 
 ###The result
 ####We now have
 1. A set of records on which we've performed cleaning and authority control.
 2. An OR Project with URIs pointing to id.loc.gov that can be used for updating headings or beginning a linked data project.
 3. A subject > author dictionary that has been reconciled with the LCNAF that can be applied to future records.
+
+###The takeaway
+* Learning regular expressions (regex) is the first and most important step in mastering data wrangling. All of these tools are at their core ways to help you apply regex to your data. 
+
