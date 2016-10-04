@@ -2,13 +2,13 @@
 ##Documents for the presentation on OpenRefine at Ohio IR day
 
 ###Acknowledgements
-*Major thanks to Christina Harlow for not only creating LC-Reconcile, but also for creating and sharing this [excellent documentation](http://christinaharlow.com/openrefine-reconciliation-workshop-c4lmdc). 
+* Major thanks to Christina Harlow for not only creating LC-Reconcile, but also for creating and sharing this [excellent documentation](http://christinaharlow.com/openrefine-reconciliation-workshop-c4lmdc). 
 
-*Data Carpentry has some great materials for [getting started with OpenRefine](http://www.datacarpentry.org/OpenRefine-ecology-lesson/01-working-with-openrefine.html).
+* Data Carpentry has some great materials for [getting started with OpenRefine](http://www.datacarpentry.org/OpenRefine-ecology-lesson/01-working-with-openrefine.html).
 ###The setup - OpenRefine
-*Ubuntu running in VirtualBox
-*[Installation instructions](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux)
-*[requires jre](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get)
+* Ubuntu running in VirtualBox
+* [Installation instructions](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux)
+* [requires jre](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get)
 
 ###The goals
 1. Perform authority control on all names and subject headings
@@ -88,7 +88,7 @@
 6. Replace all occurrences of anything starting with the word 'Dwelling' with 'Dwelling, a Poetry Podcast: ```value.replace(/^Dwelling/,"Dwelling, a Poetry Podcast")```
 
 ###Bringing them back together 
-*wait to do this if we're assigning addtional subjects to the records
+* wait to do this if we're assigning addtional subjects to the records
 1. Are we done working on this column? If so, let's bring the values back together.
 2. In the column triangle, select Edit Cells > Join multi-valued cells
 3. Choose a separator that won't be found in the data such as ||.
