@@ -18,6 +18,9 @@ def output(data, outfile)
 	end
 end
 
+def remove_trailing_comma(str)
+	str.nil? ? nil : str.chomp(',')
+end
 
 ##procedure
 output_data = []
@@ -30,10 +33,10 @@ CSV.foreach(infile, col_sep: ',') do |row|
 	out_row = row
 	if out_row[column]
 		out_row[column] = out_row[column].gsub(/[0-9-]/,"")
+		out_row[column] = remove_trailing_comma(out_row[column].strip)
 		puts out_row[column]	
 	end
 	output_data << out_row
 end
-
 output(output_data, outfile)
 
